@@ -18,7 +18,7 @@ $(document).ready(function(){
             // QUESTION 2
             {
             'titre': 'Question 2 :', 
-            'question': "Tu cherches quelqu'un d'organiser ?",
+            'question': "Tu cherches quelqu'un d'organisé ?",
             'reponse1': 'Certainement',
             'reponse2': 'Pas plus que ça',
             'reponse3': 'Ah oui !',
@@ -69,7 +69,6 @@ $(document).ready(function(){
                 $('.reponse3').text(questions[i].reponse3); 
                 // alors on récupere la reponse3
 
-            
             } 
 
         // TERMINER LE QUIZZ
