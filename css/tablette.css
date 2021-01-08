@@ -1,0 +1,76 @@
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+
+    h1, .titre, .titre p, .message {
+        font-size: 4.1rem;
+    }
+
+    p, a, .reponse {
+        font-size: 1.3rem;
+        font-weight: 400;
+    }
+
+    .reponse:hover {
+        font-size: 1.8rem!important;
+        font-weight: 500!important;
+    }
+
+    .question {
+        font-size: 2rem;
+    }
+
+    #commencer {
+        font-size: 1.8rem;
+        font-weight: 500;
+    }
+
+    .reponses {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .reponse {
+        font-size: 1.8rem;
+        width: 80%;
+    }
+
+    #quizz {
+        height: 650px;
+    }
+
+    .reponse2 {
+        margin: 1.5rem 0rem ;
+    }
+
+    .resultatPrevNext {
+        padding: 0 4rem;
+    }
+
+    .resultat {
+        font-size: 1.5rem;
+        font-weight: bold!important;
+        padding-top: 20px!important;
+        height: 70px;
+    }
+
+    .prevNext {
+        top: 2rem;
+        left: 0rem;
+    }
+
+    .message {
+        font-size: 2.5rem !important;
+
+    }
+
+    #score {
+        width: 75%;
+        font-size: 1.8rem;
+        font-weight: bold;
+        padding: 1rem;
+    }
+
+    .logo_accueil {
+        margin: 2rem;
+    }
+
+}
