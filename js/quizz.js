@@ -13,6 +13,8 @@ $(document).ready(function(){
             'reponse2': 'Peut-être, bien', 
             'reponse3': 'Non, pas vraiment ', 
             'bonnereponse': 'Oh oui !',
+            'arepondu' : false,
+            'abienrepondu' : false,
             },
 
             // QUESTION 2
@@ -20,19 +22,23 @@ $(document).ready(function(){
             'titre': 'Question 2 :', 
             'question': "Tu cherches quelqu'un d'organisé ?",
             'reponse1': 'Certainement',
-            'reponse2': 'Pas plus que ça',
+            'reponse2': 'Orga... quoi ?',
             'reponse3': 'Ah oui !',
             'bonnereponse': 'Ah oui !',
+            'arepondu' : false,
+            'abienrepondu' : false,
             },
 
             // QUESTION 3
             {
             'titre': 'Question 3 :',  
             'question': "Tu cherches une alternante ?",
-            'reponse1': "Non, un électricien ?",
-            'reponse2': "C'est quoi le web",
-            'reponse3': "Oui, on signe où ?",
-            'bonnereponse': "Oui, on signe où ?",
+            'reponse1': "Non, pas vraiment !",
+            'reponse2': "Pour quoi faire !?",
+            'reponse3': "Oui, on signe où !?",
+            'bonnereponse': "Oui, on signe où !?",
+            'arepondu' : false,
+            'abienrepondu' : false,
             }]; 
 
     // INITIALISATION DES VARIABLES
@@ -47,8 +53,12 @@ $(document).ready(function(){
         
     // GÉNÉRER LA QUESTION SELON i
         function genererQuestion(i) {
-                
-            if (i< nbrQuestions) { 
+            var terminerQuizz = true;
+            for (j = 0; j < nbrQuestions; j++) {
+                terminerQuizz = terminerQuizz && questions[j].arepondu;
+            }
+
+            if (!terminerQuizz) { 
                 // si j est strictement = i 
                 $('.resultat').css('display','none');
                 // on cache le resultat
@@ -86,7 +96,12 @@ $(document).ready(function(){
                 $('.reponses').css('display','none');
                 // alors resultat disparait
                 
-                
+                for (j = 0; j < nbrQuestions; j++) {
+                    if (questions[j].abienrepondu)
+                    {
+                        score++;
+                    }
+                }
                 if (score <=1) {
                     $('#score').fadeIn(500);
                     $('#score').css({
@@ -161,6 +176,7 @@ $(document).ready(function(){
         $('.reponse').on('click', function() {
             var reponseUtilisateur = $(this).text();
             $('.prevNext').fadeIn(500);  
+            questions[i].arepondu = true;
             if (reponseUtilisateur == questions[i].bonnereponse){ 
                 $('.resultat').html('<div>Bravo tu as trouvé !&nbsp;&nbsp;<i class="fas fa-check-circle"></i></div>');
                 $('.resultat').fadeIn(500);  
@@ -170,11 +186,12 @@ $(document).ready(function(){
                     color: '#392699',
                     fontWeight: 'bold'
                 });
-                score ++;
+                questions[i].abienrepondu = true;
+                // score ++;
             }   
             
             else {
-                $('.resultat').html('<div>Zut, tu n\'as pas trouvé !&nbsp;&nbsp;<i class="fas fa-times-circle"></i></div>');
+                $('.resultat').html('<div>Raté, mais on continue !?&nbsp;&nbsp;<i class="fas fa-times-circle"></i></div>');
                 $('.resultat').fadeIn(500); 
                 $('.resultat').css({
                     backgroundColor:'#BF3B3B',
@@ -183,6 +200,7 @@ $(document).ready(function(){
                     fontWeight: 'bold'
                 });
                 $('.bonnereponse').css('backgroundColor','green');
+                questions[i].abienrepondu = false;
             }   
         
         })      
